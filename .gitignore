@@ -1,0 +1,9 @@
+.idea
+**/.env
+**/.venv
+__pycache__
+**/__gitpycache__/
+venv
+.DS_Store
+dist
+superagi_client.egg-info
