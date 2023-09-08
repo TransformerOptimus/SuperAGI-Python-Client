@@ -1,6 +1,6 @@
 import requests as requests
 
-from superagi_client.exceptions.unauthorized_exception import UnauthorizedException
+from superagi_client.exceptions import UnauthorizedException
 
 
 def validate_api_key(base_url: str, api_key: str):

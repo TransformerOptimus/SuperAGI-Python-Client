@@ -1,14 +1,9 @@
 import json
-from typing import Optional, List
 
 import requests
 
-from superagi_client.dto.agent_config import AgentConfig
-from superagi_client.dto.agent_update_config import AgentUpdateConfig
-from superagi_client.dto.agent_execution import AgentExecution
-from superagi_client.dto.agent_run_filter import AgentRunFilter
-from superagi_client.exceptions.http_exception import http_status_code_to_exception
-from superagi_client.lib.logger import logger
+from superagi_client.exceptions import http_status_code_to_exception
+from superagi_client.types import *
 
 
 class Superagi:
@@ -22,7 +17,6 @@ class Superagi:
             headers={"X-api-key": self.api_key},
             data=json.dumps(agent_config.dict()),
         )
-        logger.debug(response.text)
         return (
             response.json()
             if response.status_code == 200
@@ -37,7 +31,6 @@ class Superagi:
             headers={"X-api-key": self.api_key},
             data=json.dumps(agent_update_config.dict()),
         )
-        logger.debug(response.text)
         return (
             response.json()
             if response.status_code == 200
@@ -46,19 +39,14 @@ class Superagi:
             )
         )
 
-    def pause_agent(
-        self, agent_id: int, agent_execution_ids: Optional[List[int]] = None
-    ):
+    def pause_agent(self, agent_id: int, agent_run_ids: Optional[List[int]] = None):
         response = requests.post(
             f"{self.base_url}/api/v1/agent/{agent_id}/pause",
             headers={"X-api-key": self.api_key},
             data=json.dumps(
-                {"run_ids": agent_execution_ids}
-                if agent_execution_ids is not None
-                else {}
+                {"run_ids": agent_run_ids} if agent_run_ids is not None else {}
             ),
         )
-        logger.debug(response.text)
         return (
             response.json()
             if response.status_code == 200
@@ -67,19 +55,14 @@ class Superagi:
             )
         )
 
-    def resume_agent(
-        self, agent_id: int, agent_execution_ids: Optional[List[int]] = None
-    ):
+    def resume_agent(self, agent_id: int, agent_run_ids: Optional[List[int]] = None):
         response = requests.post(
             f"{self.base_url}/api/v1/agent/{agent_id}/resume",
             headers={"X-api-key": self.api_key},
             data=json.dumps(
-                {"run_ids": agent_execution_ids}
-                if agent_execution_ids is not None
-                else {}
+                {"run_ids": agent_run_ids} if agent_run_ids is not None else {}
             ),
         )
-        logger.debug(response.text)
         return (
             response.json()
             if response.status_code == 200
@@ -88,17 +71,12 @@ class Superagi:
             )
         )
 
-    def create_agent_run(
-        self, agent_id: int, agent_execution: Optional[AgentExecution] = None
-    ):
+    def create_agent_run(self, agent_id: int, agent_run: Optional[AgentRun] = None):
         response = requests.post(
             f"{self.base_url}/api/v1/agent/{agent_id}/run",
             headers={"X-api-key": self.api_key},
-            data=json.dumps(
-                agent_execution.dict() if agent_execution is not None else {}
-            ),
+            data=json.dumps(agent_run.dict() if agent_run is not None else {}),
         )
-        logger.debug(response.text)
         return (
             response.json()
             if response.status_code == 200
@@ -117,7 +95,6 @@ class Superagi:
                 agent_run_filter.dict() if agent_run_filter is not None else {}
             ),
         )
-        logger.debug(response.text)
         return (
             response.json()
             if response.status_code == 200
@@ -132,7 +109,6 @@ class Superagi:
             headers={"X-api-key": self.api_key},
             data=json.dumps({"run_ids": agent_resource_ids}),
         )
-        logger.debug(response.text)
         return (
             response.json()
             if response.status_code == 200
