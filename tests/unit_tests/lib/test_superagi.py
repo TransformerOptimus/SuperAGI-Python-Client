@@ -1,6 +1,5 @@
 import pytest
-import requests
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 from superagi_client.lib.superagi import Superagi
 from superagi_client.types import (
     AgentConfig,

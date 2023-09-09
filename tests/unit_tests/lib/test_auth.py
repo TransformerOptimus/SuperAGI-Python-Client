@@ -1,5 +1,4 @@
 import pytest
-import requests
 from unittest.mock import patch
 from superagi_client.lib.auth import validate_api_key
 from superagi_client.exceptions import UnauthorizedException
