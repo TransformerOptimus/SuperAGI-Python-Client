@@ -103,11 +103,11 @@ class Superagi:
             )
         )
 
-    def get_agent_run_resources(self, agent_resource_ids: List[int]):
+    def get_agent_run_resources(self, agent_run_ids: List[int]):
         response = requests.post(
             f"{self.base_url}/api/v1/agent/resources/output",
             headers={"X-api-key": self.api_key},
-            data=json.dumps({"run_ids": agent_resource_ids}),
+            data=json.dumps({"run_ids": agent_run_ids}),
         )
         return (
             response.json()

@@ -92,5 +92,5 @@ def test_get_agent_run_resources(client):
         client.superagi, "get_agent_run_resources", return_value={"resources": []}
     ) as mock_get_run_resources:
         response = client.get_agent_run_resources([1])
-        mock_get_run_resources.assert_called_once_with(agent_resource_ids=[1])
+        mock_get_run_resources.assert_called_once_with(agent_run_ids=[1])
         assert response == {"resources": []}
