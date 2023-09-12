@@ -11,7 +11,7 @@ class SuperagiClient:
     def __init__(
         self,
         api_key: str,
-        url: Optional[str] = "app.superagi.com:80",
+        url: Optional[str] = "https://app.superagi.com",
         superagi=None,
         **kwargs: Any,
     ):
