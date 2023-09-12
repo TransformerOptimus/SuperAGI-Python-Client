@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name="superagi_client",
     version="0.0.1",
-    packages=find_packages(exclude=[".idea", ".git", "tests", "venv"]),
+    packages=find_packages(exclude=["tests*"]),
     url="https://app.superagi.com",
     license="MIT",
     author="superagi",
