@@ -16,7 +16,7 @@ class Client:
         **kwargs: Any,
     ):
         """
-        Initialize the SuperagiClient.
+        Initialize the Client.
 
         Args:
             api_key: The API key for authentication.
