@@ -7,7 +7,7 @@ from superagi_client.lib.superagi import Superagi
 from superagi_client.types import *
 
 
-class SuperagiClient:
+class Client:
     def __init__(
         self,
         api_key: str,

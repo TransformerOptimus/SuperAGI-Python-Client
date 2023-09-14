@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch
-from superagi_client import SuperagiClient
+from superagi_client import Client
 from superagi_client.types import (
     AgentConfig,
     AgentUpdateConfig,
@@ -11,7 +11,7 @@ from superagi_client.types import (
 
 @pytest.fixture
 def client():
-    return SuperagiClient(api_key="test_key", url="http://mockurl.com")
+    return Client(api_key="test_key", url="http://mockurl.com")
 
 
 def test_create_agent(client):
