@@ -46,6 +46,20 @@ class ConflictException(Exception):
         )
 
 
+class UnprocessableContentException(Exception):
+    def __init__(
+        self, message="Unprocessable Content", status_code=422, additional_info=None
+    ):
+        self.message = message
+        self.status_code = status_code
+        self.additional_info = additional_info
+        super().__init__(
+            f"{self.message} => {self.additional_info}"
+            if self.additional_info
+            else self.message
+        )
+
+
 class InternalServerErrorException(Exception):
     def __init__(
         self, message="Internal Server Error", status_code=500, additional_info=None
@@ -66,10 +80,11 @@ def http_status_code_to_exception(status_code, additional_info):
         401: UnauthorizedException,
         404: NotFoundException,
         409: ConflictException,
+        422: UnprocessableContentException,
         500: InternalServerErrorException,
     }
 
     exception = status_code_to_exception_map.get(status_code)
-    raise Exception() if exception is None else exception(
+    raise Exception(status_code, additional_info) if exception is None else exception(
         additional_info=additional_info
     )

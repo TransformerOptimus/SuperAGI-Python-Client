@@ -9,4 +9,4 @@ def validate_api_key(base_url: str, api_key: str):
     )
 
     if response.status_code == 401:
-        raise UnauthorizedException()
+        raise UnauthorizedException(additional_info=response.text)

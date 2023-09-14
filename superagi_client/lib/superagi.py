@@ -21,7 +21,7 @@ class Superagi:
             response.json()
             if response.status_code == 200
             else http_status_code_to_exception(
-                response.status_code, additional_info=response.text
+                status_code=response.status_code, additional_info=response.text
             )
         )
 
@@ -35,7 +35,7 @@ class Superagi:
             response.json()
             if response.status_code == 200
             else http_status_code_to_exception(
-                response.status_code, additional_info=response.text
+                status_code=response.status_code, additional_info=response.text
             )
         )
 
@@ -51,7 +51,7 @@ class Superagi:
             response.json()
             if response.status_code == 200
             else http_status_code_to_exception(
-                response.status_code, additional_info=response.text
+                status_code=response.status_code, additional_info=response.text
             )
         )
 
@@ -67,7 +67,7 @@ class Superagi:
             response.json()
             if response.status_code == 200
             else http_status_code_to_exception(
-                response.status_code, additional_info=response.text
+                status_code=response.status_code, additional_info=response.text
             )
         )
 
@@ -81,7 +81,7 @@ class Superagi:
             response.json()
             if response.status_code == 200
             else http_status_code_to_exception(
-                response.status_code, additional_info=response.text
+                status_code=response.status_code, additional_info=response.text
             )
         )
 
@@ -99,7 +99,7 @@ class Superagi:
             response.json()
             if response.status_code == 200
             else http_status_code_to_exception(
-                response.status_code, additional_info=response.text
+                status_code=response.status_code, additional_info=response.text
             )
         )
 
@@ -113,6 +113,6 @@ class Superagi:
             response.json()
             if response.status_code == 200
             else http_status_code_to_exception(
-                response.status_code, additional_info=response.text
+                status_code=response.status_code, additional_info=response.text
             )
         )
