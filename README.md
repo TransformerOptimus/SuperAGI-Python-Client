@@ -106,7 +106,7 @@ client = Client(api_key="YOUR_API_KEY")
 
 ## 📃Documentation
 
-The official documentation is hosted on [https://superagi.com/docs](https://superagi.com/docs/Core%20Components/SDK/python_sdk)
+The official documentation is hosted on [https://superagi.com/docs](https://superagi.com/docs/SDK/python_sdk)
 
 ## 💁‍♀️Get Help
 
